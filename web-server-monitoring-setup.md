@@ -1,11 +1,11 @@
 # Prometheus and Grafana Installation and Configuration Guide
 
 ## Group Members
-1. Member 1
-2. Member 2
-3. Member 3
-4. Member 4
-5. Member 5
+1. Hammad Kamran
+2. Muqadas 
+3. Zaman Anwar
+4. Shahreyer
+5. Shezana
 
 ## Why Choose These Tools?
 
@@ -14,9 +14,16 @@ Prometheus and Grafana are popular open-source monitoring and alerting tools tha
 - **Prometheus**: Efficient time-series data collection, flexible query language (PromQL), built-in alerting, and extensive integration capabilities.
 - **Grafana**: Highly customizable dashboards, support for multiple data sources, powerful visualization options, and alerting capabilities.
 
+## Running Services
+
+- **Prometheus**: http://<your-prometheus-ip>:9090
+- **Node Exporter**: http://<your-node-exporter-ip>:9100/metrics
+- **Grafana**: http://<your-grafana-ip>:3000
+- **Alertmanager**: http://<your-alertmanager-ip>:9093
+
 ## Steps to Download and Deploy
 
-### Install Prometheus on Ubuntu 20.04
+### Install Prometheus on Ubuntu 24.04
 
 1. Create a dedicated system user for Prometheus:
     ```sh
@@ -25,12 +32,12 @@ Prometheus and Grafana are popular open-source monitoring and alerting tools tha
 
 2. Download Prometheus:
     ```sh
-    wget https://github.com/prometheus/prometheus/releases/download/v2.32.1/prometheus-2.32.1.linux-amd64.tar.gz
+    wget https://github.com/prometheus/prometheus/releases/download/v2.53.1/prometheus-2.53.1.linux-amd64.tar.gz
     ```
 
 3. Extract the downloaded files:
     ```sh
-    tar -xvf prometheus-2.32.1.linux-amd64.tar.gz
+    tar -xvf prometheus-2.53.1.linux-amd64.tar.gz
     ```
 
 4. Create necessary directories:
@@ -97,7 +104,7 @@ Prometheus and Grafana are popular open-source monitoring and alerting tools tha
     sudo systemctl status prometheus
     ```
 
-### Install Node Exporter on Ubuntu 20.04
+### Install Node Exporter on Ubuntu 24.04
 
 1. Create a dedicated system user for Node Exporter:
     ```sh
@@ -166,7 +173,7 @@ Prometheus and Grafana are popular open-source monitoring and alerting tools tha
     sudo systemctl status node_exporter
     ```
 
-### Install Grafana on Ubuntu 20.04
+### Install Grafana on Ubuntu 24.04
 
 1. Install dependencies:
     ```sh
@@ -208,7 +215,7 @@ Prometheus and Grafana are popular open-source monitoring and alerting tools tha
     - Set URL to `http://localhost:9090`.
     - Click Save & Test.
 
-### Install Pushgateway on Ubuntu 20.04
+### Install Pushgateway on Ubuntu 24.04
 
 1. Create a dedicated system user for Pushgateway:
     ```sh
@@ -217,17 +224,17 @@ Prometheus and Grafana are popular open-source monitoring and alerting tools tha
 
 2. Download Pushgateway:
     ```sh
-    wget https://github.com/prometheus/pushgateway/releases/download/v1.4.2/pushgateway-1.4.2.linux-amd64.tar.gz
+    wget https://github.com/prometheus/pushgateway/releases/download/v1.9.0/pushgateway-1.9.0.linux-amd64.tar.gz
     ```
 
 3. Extract the downloaded files:
     ```sh
-    tar -xvf pushgateway-1.4.2.linux-amd64.tar.gz
+    tar -xvf pushgateway-1.9.0.linux-amd64.tar.gz
     ```
 
 4. Move Pushgateway binary:
     ```sh
-    sudo mv pushgateway-1.4.2.linux-amd64/pushgateway /usr/local/bin/
+    sudo mv pushgateway-1.9.0.linux-amd64/pushgateway /usr/local/bin/
     ```
 
 5. Clean up:
@@ -277,7 +284,7 @@ Prometheus and Grafana are popular open-source monitoring and alerting tools tha
     sudo systemctl status pushgateway
     ```
 
-### Install Alertmanager on Ubuntu 20.04
+### Install Alertmanager on Ubuntu 24.04
 
 1. Create a dedicated system user for Alertmanager:
     ```sh
@@ -286,12 +293,12 @@ Prometheus and Grafana are popular open-source monitoring and alerting tools tha
 
 2. Download Alertmanager:
     ```sh
-    wget https://github.com/prometheus/alertmanager/releases/download/v0.23.0/alertmanager-0.23.0.linux-amd64.tar.gz
+    wget https://github.com/prometheus/alertmanager/releases/download/v0.27.0/alertmanager-0.27.0.linux-amd64.tar.gz
     ```
 
 3. Extract the downloaded files:
     ```sh
-    tar -xvf alertmanager-0.23.0.linux-amd64.tar.gz
+    tar -xvf alertmanager-0.27.0.linux-amd64.tar.gz
     ```
 
 4. Create necessary directories:
@@ -301,8 +308,8 @@ Prometheus and Grafana are popular open-source monitoring and alerting tools tha
 
 5. Move Alertmanager binary and configuration:
     ```sh
-    sudo mv alertmanager-0.23.0.linux-amd64/alertmanager /usr/local/bin/
-    sudo mv alertmanager-0.23.0.linux-amd64/alertmanager.yml /etc/alertmanager/
+    sudo mv alertmanager-0.27.0.linux-amd64/alertmanager /usr/local/bin/
+    sudo mv alertmanager-0.27.0.linux-amd64/alertmanager.yml /etc/alertmanager/
     ```
 
 6. Set correct ownership:
@@ -394,4 +401,3 @@ The configuration for sending email alerts using Alertmanager is included, with 
 ---
 
 By following this guide, you should have a fully functional monitoring and alerting setup using Prometheus, Grafana, Node Exporter, Pushgateway, and Alertmanager. This setup will enable you to monitor system performance, visualize data, and receive alerts for critical issues.
-
